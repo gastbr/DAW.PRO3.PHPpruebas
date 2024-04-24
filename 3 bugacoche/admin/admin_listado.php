@@ -1,3 +1,7 @@
+<?php
+include ('coches_sql.php');
+?>
+
 <html lang="es">
 
 <head>
@@ -18,31 +22,45 @@
                 <a href="../bugacoche.php">[ WEB ]</a>
                 <hr>
                 <a class="btn btn-primary" href="coches_create.php">+ Añadir coche</a>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Potencia</th>
-                            <th>Maletero</th>
-                            <th>Precio</th>
-                            <th>Acciones</th>
-                        </tr>
-                        <tr>
-                            <td>Audi</td>
-                            <td>A3 Sportback 2020</td>
-                            <td>400 CV</td>
-                            <td>383 L</td>
-                            <td>28385 €</td>
-                            <td>
-                                <a href="coches_view.php?id=2" class="btn btn-primary">Ver</a>
-                                <a href="coches_update.php?id=2" class="btn btn-warning">Editar</a>
-                                <a href="coches_delete.php?id=2" class="btn btn-danger">Borrar</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <?php
+                if ($table->num_rows > 0) { ?>
 
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Potencia</th>
+                                <th>Maletero</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </tr>
+                            <?php
+                            while ($row = $table->fetch_assoc()) {
+                                ?>
+                                <tr>
+                                    <td> <?php echo $row["marca"]; ?> </td>
+                                    <td> <?php echo $row["modelo"]; ?> </td>
+                                    <td> <?php echo $row["precio"]; ?> </td>
+                                    <td> <?php echo $row["potencia"]; ?> </td>
+                                    <td> <?php echo $row["maletero"]; ?> </td>
+                                    <td>
+                                        <a href="coches_view.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">Ver</a>
+                                        <a href="coches_update.php?id=<?php echo $row["id"]; ?>"
+                                            class="btn btn-warning">Editar</a>
+                                        <a href="coches_delete.php?id=<?php echo $row["id"]; ?>"
+                                            class="btn btn-danger">Borrar</a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                    <?php
+                } else { ?>
+                    <p>No se han encontrado registros.</p>
+                <?php } ?>
             </div>
 
         </div>

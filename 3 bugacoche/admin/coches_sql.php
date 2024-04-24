@@ -7,6 +7,7 @@ if (!$mysqli) {
 }
 echo "Conectado a la base de datos.";
 
+
 // INSERT
 if (isset($_GET["opcion"]) && $_GET["opcion"] == 'insertar') {
 
@@ -26,42 +27,25 @@ if (isset($_GET["opcion"]) && $_GET["opcion"] == 'insertar') {
     exit();
 }
 
+// DELETE
+
+if (isset($_GET["opcion"]) && $_GET["opcion"] == 'borrar') {
+    $mysqli->query('DELETE from coches where id=' . $_GET["id"]);
+
+    header("Location: admin_listado.php");
+    exit();
+}
+
 // SELECT
 
 if (isset($_GET["orderby"])) {
-
-    switch ($_GET["orderby"]) {
-        case 'marca':
-            $query = "SELECT marca, modelo, potencia, maletero, precio, imagen from coches order by marca";
-            break;
-        case 'precioasc':
-            $query = "SELECT marca, modelo, potencia, maletero, precio, imagen from coches order by precio";
-            break;
-        case 'preciodesc':
-            $query = "SELECT marca, modelo, potencia, maletero, precio, imagen from coches order by precio desc";
-            break;
-        case 'potencia':
-            $query = "SELECT marca, modelo, potencia, maletero, precio, imagen from coches order by potencia";
-            break;
-        case 'maletero':
-            $query = "SELECT marca, modelo, potencia, maletero, precio, imagen from coches order by maletero";
-            break;
-    }
+    $query = "SELECT * from coches order by " . $_GET["orderby"];
 } else {
-    $query = "SELECT marca, modelo, potencia, maletero, precio, imagen from coches";
+    $query = "SELECT * from coches";
 }
 
-$result = $mysqli->query($query);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $marca = $row["marca"];
-        $modelo = $row["modelo"];
-        $potencia = $row["potencia"];
-        $maletero = $row["maletero"];
-        $precio = $row["precio"];
-        $imagen = $row["imagen"];
-    }
-} else {
-    echo "No results";
+if (isset($_GET["id"])) {
+    $query = "SELECT * from coches where id=" . $_GET["id"];
 }
+
+$table = $mysqli->query($query);
