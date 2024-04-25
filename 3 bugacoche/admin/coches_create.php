@@ -40,8 +40,8 @@
             <label for="imagen" class="form-label">URL Imagen</label>
             <input type="text" class="form-control" id="imagen" name="imagen">
         </div>
-        <button type="submit" class="btn btn-primary">Añadir coche</button>
-        <a href="coches_listado.php" class="btn btn-danger">Volver al listado</a>
+        <a href="admin_listado.php" class="btn btn-outline-primary">Volver al listado</a>
+        <button type="submit" class="btn btn-success">Añadir coche</button>
     </form>
 </div>
 

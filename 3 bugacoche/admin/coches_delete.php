@@ -25,7 +25,7 @@ $row = $table->fetch_assoc();
                 <hr>
                 <h2 class="danger">¿Desea borrar el <strong> <?php echo $row["marca"]." ".$row["modelo"]; ?> </strong>?</h2>
                 <br><br>
-                <a href="admin_listado.php" class="btn btn-success">No. volver al listado de coches</a>
+                <a href="admin_listado.php" class="btn btn-outline-primary">No. Volver al listado de coches.</a>
                 <a href="coches_sql.php?opcion=borrar&amp;id=<?php echo $_GET["id"]; ?>" class="btn btn-danger">Si. Borrar este
                     coche</a>
             </div>

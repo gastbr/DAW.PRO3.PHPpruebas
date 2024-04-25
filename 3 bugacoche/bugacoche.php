@@ -16,7 +16,6 @@ include 'admin/coches_sql.php';
     <div class="d-flex flex-column min-vh-100">
         <div class="flex-grow-1">
             <div class="container">
-
                 <div class="text-end"><a href="admin/admin_listado.php">[ LOGIN-ADMIN ]</a></div>
                 <h1 class="text-start">BUGACOCHE.COM</h1>
                 <hr>
@@ -66,6 +65,9 @@ include 'admin/coches_sql.php';
             crossorigin="anonymous"></script>
 
     </div>
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>

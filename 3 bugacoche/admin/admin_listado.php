@@ -21,7 +21,7 @@ include ('coches_sql.php');
 
                 <a href="../bugacoche.php">[ WEB ]</a>
                 <hr>
-                <a class="btn btn-primary" href="coches_create.php">+ Añadir coche</a>
+                <a class="btn btn-success" href="coches_create.php">+ Añadir coche</a>
                 <?php
                 if ($table->num_rows > 0) { ?>
 
@@ -41,9 +41,9 @@ include ('coches_sql.php');
                                 <tr>
                                     <td> <?php echo $row["marca"]; ?> </td>
                                     <td> <?php echo $row["modelo"]; ?> </td>
-                                    <td> <?php echo $row["precio"]; ?> </td>
                                     <td> <?php echo $row["potencia"]; ?> </td>
                                     <td> <?php echo $row["maletero"]; ?> </td>
+                                    <td> <?php echo $row["precio"]; ?> </td>
                                     <td>
                                         <a href="coches_view.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">Ver</a>
                                         <a href="coches_update.php?id=<?php echo $row["id"]; ?>"
